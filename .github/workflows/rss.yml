@@ -1,0 +1,49 @@
+name: RSS noviel
+
+on:
+  schedule:
+    - cron: "23 * * * *"   # každú hodinu
+  workflow_dispatch:         # ručné spustenie z karty Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Vygenerovať feedy
+        run: python rss/generate.py --cache .cache --out public
+        env:
+          FEED_BASE_URL: ${{ steps.pages.outputs.base_url }}
+          CZ_SOURCE_REPO: ${{ secrets.CZ_SOURCE_REPO }}
+          SK_SOURCE_REPO: ${{ secrets.SK_SOURCE_REPO }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
