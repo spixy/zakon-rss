@@ -266,11 +266,25 @@ def main() -> None:
         picked.sort(key=lambda x: (x[1], info[x[0]]["committed"]), reverse=True)
         picked = picked[: args.max_items]
         items = [item_xml(code, cfg, sha, day, info[sha]) for sha, day in picked]
-        (args.out / f"{code}.xml").write_text(feed_xml(code, cfg, items, args.base_url, now), encoding="utf-8")
+        changed = write_if_changed(args.out / f"{code}.xml", feed_xml(code, cfg, items, args.base_url, now))
         stats[code] = len(items)
-        print(f"{code}: {len(items)} items ({start} .. {end})")
+        print(f"{code}: {len(items)} items ({start} .. {end}){' changed' if changed else ''}")
 
-    (args.out / "index.html").write_text(index_html(stats, args.base_url, now), encoding="utf-8")
+    write_if_changed(args.out / "index.html", index_html(stats, args.base_url, now))
+
+
+# časť, ktorá sa mení pri každom behu, aj keď sa obsah nezmenil
+VOLATILE = re.compile(r"<lastBuildDate>[^<]*</lastBuildDate>|Aktualizované [^.]* UTC")
+
+
+def write_if_changed(path: Path, text: str) -> bool:
+    """Prepíše súbor len pri zmene obsahu, aby vznikal commit iba pri skutočnej novele."""
+    if path.exists():
+        old = path.read_text(encoding="utf-8")
+        if VOLATILE.sub("", old) == VOLATILE.sub("", text):
+            return False
+    path.write_text(text, encoding="utf-8", newline="\n")
+    return True
 
 
 if __name__ == "__main__":

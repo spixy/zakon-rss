@@ -2,11 +2,12 @@ name: RSS noviel
 
 on:
   schedule:
-    - cron: "0 0 * * *"    # denne 00:00 UTC = 01:00 SEČ (02:00 v lete)
+    # 05:00 a 17:00 UTC = 06:00 a 18:00 SEČ (v lete 07:00 a 19:00)
+    - cron: "0 5,17 * * *"
   workflow_dispatch:         # ručné spustenie z karty Actions
 
 permissions:
-  contents: read
+  contents: write            # commit zmenených feedov do feeds/
   pages: write
   id-token: write
 
@@ -28,15 +29,30 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Vygenerovať feedy
-        run: python rss/generate.py --cache .cache --out public
+        run: python rss/generate.py --cache .cache --out feeds
         env:
           FEED_BASE_URL: ${{ steps.pages.outputs.base_url }}
           CZ_SOURCE_REPO: ${{ secrets.CZ_SOURCE_REPO }}
           SK_SOURCE_REPO: ${{ secrets.SK_SOURCE_REPO }}
 
+      # Commit len pri zmene obsahu. Udržiava repozitár aktívny, takže GitHub
+      # naplánovaný beh po 60 dňoch nevypne, a zároveň vzniká história feedov.
+      - name: Uložiť zmenené feedy
+        run: |
+          git add feeds
+          if git diff --cached --quiet; then
+            echo "Feedy bez zmeny."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -q -m "Feedy: $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git pull -q --rebase origin main
+            git push -q origin HEAD:main
+          fi
+
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: feeds
 
   deploy:
     needs: build

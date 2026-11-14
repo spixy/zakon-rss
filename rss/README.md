@@ -1,6 +1,8 @@
 # RSS feedy noviel zákonov (CZ a SK)
 
-Dva statické RSS feedy, ktoré raz denne (o 01:00 SEČ, v lete o 02:00) vygeneruje GitHub Actions a zverejní GitHub Pages. Nie je potrebný žiadny server.
+Dva statické RSS feedy, ktoré dvakrát denne (o 06:00 a 18:00 SEČ, v lete o 07:00 a 19:00) vygeneruje GitHub Actions a zverejní GitHub Pages. Nie je potrebný žiadny server.
+
+Keď sa obsah feedu zmení, workflow ho uloží aj do priečinka [`feeds/`](../feeds) v tomto repozitári. Vzniká tak história feedov a repozitár zostáva aktívny, takže GitHub naplánovaný beh po 60 dňoch nevypne.
 
 | Feed | Adresa | Obsah |
 |---|---|---|
@@ -24,7 +26,7 @@ Jedna položka zodpovedá **jednej zmene predpisu, ktorá nadobúda účinnosť*
 3. V **Settings → Secrets and variables → Actions → New repository secret** pridaj dva secrets so zdrojovými repozitármi vo tvare `vlastník/názov`:
    - `CZ_SOURCE_REPO`
    - `SK_SOURCE_REPO`
-4. V karte **Actions** spusti workflow **RSS noviel** cez *Run workflow*. Ďalej sa spúšťa sám raz denne. Čas behu sa mení v `cron` v `.github/workflows/rss.yml` (v UTC).
+4. V karte **Actions** spusti workflow **RSS noviel** cez *Run workflow*. Ďalej sa spúšťa sám dvakrát denne. Čas behu sa mení v `cron` v `.github/workflows/rss.yml` (v UTC).
 5. Feedy budú na `https://<účet>.github.io/<repozitár>/cz.xml` a `…/sk.xml`. Na `…/index.html` je ich zoznam.
 
 Pri súkromnom repozitári sú GitHub Pages dostupné len v platených plánoch. Verejný repozitár funguje zadarmo.
@@ -52,7 +54,7 @@ Užitočné parametre:
 
 - **Čerstvosť závisí od zdrojového repozitára.** Feed je taký aktuálny, ako repozitár s históriou predpisov. Pri SK sa dáta zatiaľ dopĺňajú v dávkach.
 - **SK neuvádza paragrafy.** Slov-Lex uvádza novelu len pre celé znenie, takže SK položky nehovoria, ktoré paragrafy sa zmenili. Pri zmenách označených „najstaršia verzia v tomto zázname“ ide o aktuálne znenie bez dohľadanej novely.
-- **Uspávanie workflowu.** GitHub automaticky vypne naplánované workflowy, ak v repozitári 60 dní nebola žiadna aktivita. Treba ich vtedy znova zapnúť v karte Actions.
+- **Uspávanie workflowu.** GitHub automaticky vypne naplánované workflowy, ak v repozitári 60 dní nebola žiadna aktivita. Commity feedov tomu bránia, ak sa feed aspoň raz za 60 dní zmení. Ak by sa predsa len vypol, znova sa zapína v karte Actions.
 - **Právna záväznosť.** Právne záväzný je len text vyhlásený v Zbierke zákonov / Sbírce zákonů.
 
 Dáta: e-Sbírka (Ministerstvo vnitra ČR) a Slov-Lex (Ministerstvo spravodlivosti SR).
