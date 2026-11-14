@@ -1,6 +1,6 @@
 # RSS feedy noviel zákonov (CZ a SK)
 
-Dva statické RSS feedy, ktoré každú hodinu vygeneruje GitHub Actions a zverejní GitHub Pages. Nie je potrebný žiadny server.
+Dva statické RSS feedy, ktoré raz denne (o 01:00 SEČ, v lete o 02:00) vygeneruje GitHub Actions a zverejní GitHub Pages. Nie je potrebný žiadny server.
 
 | Feed | Adresa | Obsah |
 |---|---|---|
@@ -24,7 +24,7 @@ Jedna položka zodpovedá **jednej zmene predpisu, ktorá nadobúda účinnosť*
 3. V **Settings → Secrets and variables → Actions → New repository secret** pridaj dva secrets so zdrojovými repozitármi vo tvare `vlastník/názov`:
    - `CZ_SOURCE_REPO`
    - `SK_SOURCE_REPO`
-4. V karte **Actions** spusti workflow **RSS noviel** cez *Run workflow*. Ďalej sa spúšťa každú hodinu sám.
+4. V karte **Actions** spusti workflow **RSS noviel** cez *Run workflow*. Ďalej sa spúšťa sám raz denne. Čas behu sa mení v `cron` v `.github/workflows/rss.yml` (v UTC).
 5. Feedy budú na `https://<účet>.github.io/<repozitár>/cz.xml` a `…/sk.xml`. Na `…/index.html` je ich zoznam.
 
 Pri súkromnom repozitári sú GitHub Pages dostupné len v platených plánoch. Verejný repozitár funguje zadarmo.

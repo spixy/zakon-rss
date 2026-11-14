@@ -212,7 +212,7 @@ def feed_xml(code: str, cfg: dict, items: list[str], base_url: str, now: dt.date
         f"    <language>{cfg['language']}</language>",
         f"    <lastBuildDate>{format_datetime(now)}</lastBuildDate>",
         f'    <atom:link href="{escape(self_url)}" rel="self" type="application/rss+xml"/>',
-        "    <ttl>60</ttl>",
+        "    <ttl>720</ttl>",
         *items,
         "  </channel>",
         "</rss>",

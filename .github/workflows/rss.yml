@@ -2,7 +2,7 @@ name: RSS noviel
 
 on:
   schedule:
-    - cron: "23 * * * *"   # každú hodinu
+    - cron: "0 0 * * *"    # denne 00:00 UTC = 01:00 SEČ (02:00 v lete)
   workflow_dispatch:         # ručné spustenie z karty Actions
 
 permissions:
