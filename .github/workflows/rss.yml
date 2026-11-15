@@ -2,8 +2,9 @@ name: RSS noviel
 
 on:
   schedule:
-    # 05:00 a 17:00 UTC = 06:00 a 18:00 SEČ (v lete 07:00 a 19:00)
-    - cron: "0 5,17 * * *"
+    # 05:20 a 17:20 UTC = 06:20 a 18:20 SEČ (v lete 07:20 a 19:20).
+    # Mimo celej hodiny, keď je GitHub preťažený a behy meškajú.
+    - cron: "20 5,17 * * *"
   workflow_dispatch:         # ručné spustenie z karty Actions
 
 permissions:

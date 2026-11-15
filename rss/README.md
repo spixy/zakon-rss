@@ -1,6 +1,6 @@
 # RSS feedy noviel zákonov (CZ a SK)
 
-Dva statické RSS feedy, ktoré dvakrát denne (o 06:00 a 18:00 SEČ, v lete o 07:00 a 19:00) vygeneruje GitHub Actions a zverejní GitHub Pages. Nie je potrebný žiadny server.
+Dva statické RSS feedy, ktoré dvakrát denne (o 06:20 a 18:20 SEČ, v lete o 07:20 a 19:20) vygeneruje GitHub Actions a zverejní GitHub Pages. Nie je potrebný žiadny server. GitHub naplánované behy často spúšťa s oneskorením, niekedy aj niekoľkohodinovým.
 
 Keď sa obsah feedu zmení, workflow ho uloží aj do priečinka [`feeds/`](../feeds) v tomto repozitári. Vzniká tak história feedov a repozitár zostáva aktívny, takže GitHub naplánovaný beh po 60 dňoch nevypne.
 
