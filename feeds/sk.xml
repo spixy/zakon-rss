@@ -5,7 +5,7 @@
     <link>https://www.slov-lex.sk</link>
     <description>Zmeny zákonov a ďalších predpisov zo Zbierky zákonov podľa dňa účinnosti. Zdroj: Slov-Lex.</description>
     <language>sk</language>
-    <lastBuildDate>Fri, 20 Nov 2026 14:00:33 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 03:20:14 +0000</lastBuildDate>
     <atom:link href="https://spixy.github.io/zakon-rss/sk.xml" rel="self" type="application/rss+xml"/>
     <ttl>720</ttl>
     <item>
@@ -435,6 +435,15 @@
       <pubDate>Fri, 09 Oct 2026 12:00:00 +0100</pubDate>
       <category>baseline</category>
       <description>&lt;p&gt;&lt;strong&gt;Účinnosť od: 2026-10-09&lt;/strong&gt; · Slov-Lex (Ministerstvo spravodlivosti SR)&lt;/p&gt;&lt;p&gt;Zákon o sudcoch a prísediacich a o zmene a doplnení niektorých zákonov&lt;/p&gt;&lt;p&gt;Časová verzia predpisu účinná od 2026-10-09, ako ju uverejňuje Slov-Lex (verzia 54 z 54).&lt;br&gt;Staršie verzie a novely, ktoré k nej viedli, tu zatiaľ nie sú, preto tento commit nie je pripísaný nijakému predpisu.&lt;/p&gt;&lt;p&gt;The version of this act in force from this day, as Slov-Lex publishes it (version 54 of&lt;br&gt;54). Its earlier versions and the amending acts that led to it are not traced here yet, so this commit is credited to no act.&lt;/p&gt;&lt;p&gt;Slov-Lex uvádza pri tejto verzii (names for this version): 247/2026 Z. z.&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.slov-lex.sk/ezbierky/pravne-predpisy/SK/ZZ/2000/385/"&gt;Oficiálny text&lt;/a&gt; · &lt;a href="https://static.slov-lex.sk/static/SK/ZZ/2000/385/20261009.html"&gt;https://static.slov-lex.sk/static/SK/ZZ/2000/385/20261009.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>8/2026 R. o.: Opatrenie Ministerstva kultúry Slovenskej republiky, ktorým sa mení a dopĺňa opatrenie Ministerstva kultúry Slovenskej republiky z 19. novembra 2020 č. MK-5782/2020-110/19273 o podrobnostiach poskytovania…</title>
+      <link>https://www.slov-lex.sk/ezbierky/chronologicky-register-opatreni/SK/OP/2026/8/</link>
+      <guid isPermaLink="false">sk-cd3a25446fca9f6124fb</guid>
+      <pubDate>Thu, 01 Oct 2026 12:00:00 +0100</pubDate>
+      <category>Opatrenie</category>
+      <category>law</category>
+      <description>&lt;p&gt;&lt;strong&gt;Účinnosť od: 2026-10-01&lt;/strong&gt; · 8/2026 R. o.&lt;/p&gt;&lt;p&gt;Predpis v prvej časovej verzii, ktorú Slov-Lex uverejňuje, účinnej od 2026-10-01. Slov-Lex pri nej neuvádza nijakú novelu: je to pôvodné znenie.&lt;/p&gt;&lt;p&gt;The act in the first dated version Slov-Lex publishes, in force from this day. Slov-Lex names no amending act for it: it is the act as enacted.&lt;/p&gt;&lt;p&gt;&lt;a href="https://www.slov-lex.sk/ezbierky/chronologicky-register-opatreni/SK/OP/2026/8/"&gt;Oficiálny text&lt;/a&gt; · &lt;a href="https://static.slov-lex.sk/static/SK/OP/2026/8/20261001.html"&gt;https://static.slov-lex.sk/static/SK/OP/2026/8/20261001.html&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>43/2026 Z. z.: zrušený od 2026-10-01 (237/2026 Z. z.)</title>
